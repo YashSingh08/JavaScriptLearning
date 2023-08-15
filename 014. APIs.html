@@ -1,0 +1,47 @@
+<!-- 
+    API stands for Application Programming Interface.
+    APIs have several use cases and allow you to perform a variety of time-saving functions.
+    Whenever we want to fetch any information or data we can call the API and let API do the
+    work of getting us the information.
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIs</title>
+</head>
+<body>
+    <div class="heading"><h1>Random Dog Image</h1></div>
+    <button id="dog">Get New Dog Image</button>
+    <div id="dogImage"><img src="" alt=""></div>
+
+    <!-- javascript starts -->
+    <script>
+        const dogImageDiv = document.getElementById('dogImage')
+        const getRandomDog = document.getElementById('dog')
+
+        /*
+            Here we are fetching random dog image using the API URL, we are using '.then' becuase API call
+            is an asynchronous call.
+            Then we are getting the JSON response (JSON stands for Javascript Object Notation) and we are
+            displaying the respond URL on console.
+            To show the image we get, we are using DOM Manipulation to insert the image URL in the img tag
+        */
+        // Random Dog image API
+        const randomDog = () => {
+            fetch('https://dog.ceo/api/breeds/image/random')
+            .then(response => response.json())
+            .then(json => {
+                console.log(json.message)
+                dogImageDiv.innerHTML = `<img src='${json.message}' height=500 width=500/>`
+            })
+        }
+        
+        // Here is the button which on click is calling the API function
+        getRandomDog.onclick = () => randomDog()
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add event listener</title>
+</head>
+<body>
+    <div id="play">Hello World</div>
+
+    <audio id="playSong" src=""></audio>
+
+    <!-- javascript starts -->
+    <script>
+        // grabbing the element with ID 'play'
+        let playDiv = document.getElementById('play')
+        // whenever play div is clicked
+        playDiv.addEventListener('click', function () {
+            console.log("hey, play div got clicked")
+        })
+
+        // applying add event listener to all the dom
+        document.addEventListener('keydown', function (e) {
+            // when q is pressed
+            if(e.key == "q") {
+                console.log("You pressed q")
+            }
+            // when any other key from keyboard is pressed
+            else {
+                console.log("you pressed somthing")
+            }
+        })
+
+        // we can also use addEventListener to play audio
+        document.addEventListener('keydown', function (e) {
+            if(e.key == 'p') {
+                console.log("audio will be played if available")
+                document.getElementById('playSong').play()
+            }
+            else{
+                console.log(error)
+            }
+        })
+    </script>
+</body>
+</html>

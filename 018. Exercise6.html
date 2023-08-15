@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Exercise For classes</title>
+</head>
+
+<body>
+  <input type="text" id='amount'>
+  <button id='deposit'>+Deposit</button>
+  <button id='withdraw'>-Withdraw</button>
+  <div id='balance'><p>Balance: 0</p></div>
+  <script>
+    class Bank {
+    constructor(balance) {
+        this.balance = balance
+    }
+    
+    withdraw(amount) {
+        // guard clause
+        if (this.balance - amount <= 0) {
+        console.log('You cannot withdraw more than what you have!')
+        console.log({balance: this.balance})
+        return
+        }
+        
+        this.balance -= amount
+        console.log('withdrew', `Rs. ${amount}`)
+        console.log({balance: this.balance})
+    }
+
+    deposit(amount) {
+        this.balance += amount
+        console.log('deposited', `Rs. ${amount}`)
+        console.log({balance: this.balance})
+    }
+    }
+
+    const checking = new Bank(0)
+
+    const depositButton = document.getElementById('deposit')
+    const withdrawButton = document.getElementById('withdraw')
+    const amountInput = document.getElementById('amount')
+    const balanceDiv = document.getElementById('balance')
+
+    depositButton.onclick = () => {
+    const amount = Number(amountInput.value)
+    checking.deposit(amount)
+    balanceDiv.innerText = `Balance: ${checking.balance}`
+    }
+
+    withdrawButton.onclick = () => {
+    const amount = Number(amountInput.value)
+    checking.withdraw(amount)
+    balanceDiv.innerText = `Balance: ${checking.balance}`
+    }
+  </script>
+</body>
+
+</html>
